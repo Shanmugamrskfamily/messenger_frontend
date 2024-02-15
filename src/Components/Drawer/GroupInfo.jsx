@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Fragment } from 'react'
 import { useSelector } from 'react-redux'
-import { getUserDetails } from '../../Helper/sessionHelper'
+import { getUserDetails } from '../../Helper/SessionHelper'
 import logingIcon from '../../assets/images/Dual Ring-1s-200px.svg'
 import { ErrorToast, IsEmpty } from '../../Helper/FormHelper'
 import { addToGroupRequest, removeFromGroupRequest, renameGroupRequest } from '../../APIrequests/ChatRequset'
