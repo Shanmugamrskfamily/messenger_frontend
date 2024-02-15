@@ -107,7 +107,7 @@ function LoginForm() {
             variant="contained"
             color="secondary"
             onClick={() =>
-              login({ email: "user2@gmail.com", password: "12345678" })
+              login({ email: "user2@gmail.com", password: "87654321" })
             }
           >
             Demo User2

@@ -120,7 +120,7 @@ function ConversationRoom() {
           />
           <div className="name-mobile">
             <span className="header-name" style={{ fontSize: "14px" }}>
-              {currentRoom.name} - {currentRoom.mobile}
+              {currentRoom.name} - {currentRoom.email}
             </span>
             <span>
               {currentRoom.isOnline ? (
