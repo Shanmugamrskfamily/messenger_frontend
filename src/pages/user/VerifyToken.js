@@ -8,18 +8,16 @@ function VerifyToken() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log(activationtoken);
     if (!activationtoken) {
       // Token not found in params
       toast.error("Activation token not found.");
-      navigate("/");
+    //   navigate("/");
       return;
     }
 
-    fetch(`https://messenger-backend-nr0d.onrender.com/user/activate`, {
+    fetch(`https://messenger-backend-nr0d.onrender.com/user/activate/${activationtoken}`, {
       method: "POST",
-      headers: {
-        activationtoken:`${activationtoken}`,
-      },
     })
       .then((response) => {
         if (!response.ok) {
@@ -34,7 +32,7 @@ function VerifyToken() {
       })
       .catch((error) => {
         // Error during activation
-        toast.error("Activation failed.");
+        toast.error(`Activation failed.. with ${error}`);
         navigate("/");
       })
       .finally(() => {
