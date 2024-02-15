@@ -20,7 +20,7 @@ const Registration = () => {
       ErrorToast("Invalid email address.");
     } else if (IsPassword(password.value)) {
       ErrorToast(
-        "Password must be six characters, at least one letter and one number !"
+        "Password must be 6 to 12 characters, at least one letter and one number and one Special Charactor(@,$,_) !"
       );
     } else {
       await RegistrationRequest(
@@ -40,7 +40,7 @@ const Registration = () => {
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
           <a
             href="#"
-            class="flex items-center mb-6 text-2xl font-semibold text-gray-900"
+            className="flex items-center mb-6 text-2xl font-semibold text-gray-900"
           >
             <img
               src="/icon.png"
@@ -59,7 +59,7 @@ const Registration = () => {
                 <div className="flex flex-col md:flex-row md:justify-between gap-4">
                   <div className="w-full md:w-1/2">
                     <label
-                      for="fname"
+                      htmlFor="fname"
                       className="block mb-2 text-sm font-medium text-gray-900 "
                     >
                       Firstname
@@ -76,7 +76,7 @@ const Registration = () => {
                   </div>
                   <div className="w-full md:w-1/2">
                     <label
-                      for="lname"
+                      htmlFor="lname"
                       className="block mb-2 text-sm font-medium text-gray-900 "
                     >
                       Lastname
@@ -94,7 +94,7 @@ const Registration = () => {
                 </div>
                 <div>
                   <label
-                    for="email"
+                    htmlFor="email"
                     className="block mb-2 text-sm font-medium text-gray-900 "
                   >
                     Your email
@@ -111,17 +111,17 @@ const Registration = () => {
                 </div>
                 <div>
                   <label
-                    for="password"
+                    htmlFor="password"
                     className="block mb-2 text-sm font-medium text-gray-900 "
                   >
                     Password
                   </label>
-                  <div class="relative w-full">
-                    <div class="absolute inset-y-0 right-0 flex items-center px-2">
+                  <div className="relative w-full">
+                    <div className="absolute inset-y-0 right-0 flex items-center px-2">
                       <label
                         onClick={() => setShow(!show)}
-                        class="hover:bg-gray-200 rounded px-2 py-1 text-sm text-gray-600 font-mono cursor-pointer js-password-label"
-                        for="toggle"
+                        className="hover:bg-gray-200 rounded px-2 py-1 text-sm text-gray-600 font-mono cursor-pointer js-password-label"
+                        htmlFor="toggle"
                       >
                         {show ? (
                           <svg
@@ -129,7 +129,7 @@ const Registration = () => {
                             width="20"
                             height="20"
                             fill="black"
-                            class="bi bi-eye-slash"
+                            className="bi bi-eye-slash"
                             viewBox="0 0 16 16"
                           >
                             <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" />{" "}
@@ -142,7 +142,7 @@ const Registration = () => {
                             width="20"
                             height="20"
                             fill="black"
-                            class="bi bi-eye"
+                            className="bi bi-eye"
                             viewBox="0 0 16 16"
                           >
                             <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />{" "}
@@ -157,7 +157,7 @@ const Registration = () => {
                       name="password"
                       id="password"
                       placeholder="••••••••"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#6c2fa8] focus:border-[#6c2fa8] block w-full p-2.5 "
+                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#6c2fa8] focus:border-[#6c2fa8] block w-full p-2.5 "
                       required=""
                     />
                   </div>
@@ -173,7 +173,7 @@ const Registration = () => {
                     />
                   </div>
                   <div className="ml-3 text-sm">
-                    <label for="terms" className="font-medium text-gray-500">
+                    <label htmlFor="terms" className="font-medium text-gray-500">
                       Remember me{" "}
                     </label>
                   </div>

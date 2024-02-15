@@ -1,11 +1,11 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react'
-import UserSearchLoadings from '../Loading/UserSearchLoadings'
+import UserSearchLoadings from '../Loading/UserSearchLoading'
 import { ErrorToast, IsEmpty } from '../../Helper/FormHelper'
 import { searchUserRequest } from '../../APIrequests/AuthRequest'
 import { useSelector } from 'react-redux'
 import store from '../../Redux/Store/Store'
 import { removeSelectForGrp, setEmpty, setSelectForGrp, } from '../../Redux/State/ChatSlice'
-import { createGroupRequest } from '../../APIrequests/ChatRequset'
+import { createGroupRequest } from '../../APIrequests/ChatRequest'
 
 const GrpUserSearch = ({ state, dispatch }) => {
     const [loadings, setLoading] = useState(false)
@@ -51,7 +51,7 @@ const GrpUserSearch = ({ state, dispatch }) => {
     return (
         <Fragment >
             <aside className="fixed h-full w-full z-50 left-0 top-0 transition duration-300 ease-in-out" style={{ display: showGUS ? 'block' : 'none' }}>
-                <div onClick={() => dispatch({ type: 'HIDEGUS' })} class="fixed h-full w-full left-0 top-0 bg-black bg-opacity-50 z-[-1]"></div>
+                <div onClick={() => dispatch({ type: 'HIDEGUS' })} className="fixed h-full w-full left-0 top-0 bg-black bg-opacity-50 z-[-1]"></div>
                 <div className="fixed flex flex-col item-center py-5 space-y-4 h-full w-3/4 md:w-2/6 xl:w-1/5 left-0 top-0 bg-white shadow-lg transition duration-700 ease-in-out" style={{ left: showGUS ? '0%' : '100%' }}>
                     <h2 className="px-5 text-lg font-medium text-gray-800 ">Create Group</h2 >
                     <div className='px-5 my-4'>
@@ -115,7 +115,7 @@ const GrpUserSearch = ({ state, dispatch }) => {
                     {
                         selectForGrp.length>0 && 
                         <div className='px-5 w-full'>
-                            <button onClick={onCreateGrp} type="submit" class="w-full text-white bg-[#0C7075] hover:bg-[#0b5155] focus:ring-4 focus:outline-none focus:ring-[#8de6eb] font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Create</button>
+                            <button onClick={onCreateGrp} type="submit" className="w-full text-white bg-[#0C7075] hover:bg-[#0b5155] focus:ring-4 focus:outline-none focus:ring-[#8de6eb] font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Create</button>
                         </div>
                     }
                 </div>

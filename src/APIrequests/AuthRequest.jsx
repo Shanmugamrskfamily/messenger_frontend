@@ -19,7 +19,7 @@ const AxiosHeader = { headers: { token: getToken() } };
 
 export const RegistrationRequest = (firstname, lastname, email, password) => {
   store.dispatch(showLoader());
-  let URL = `${BaseURL}/auth/register`;
+  let URL = `${BaseURL}/auth/signup`;
   let PostBody = {
     firstname: firstname,
     lastname: lastname,
@@ -34,6 +34,7 @@ export const RegistrationRequest = (firstname, lastname, email, password) => {
         SuccessToast("Registration Successful.");
         return true;
       } else {
+        console.log('Error Response: ',res);
         ErrorToast("Something Went Wrong");
         return false;
       }

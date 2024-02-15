@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import { ErrorToast, IsEmpty } from "../Helper/FormHelper";
-// import BG from '../assets/images/bg-chat.png'
+import BG from '../assets/images/bg-chat.png'
 import Message from "./Message";
 import { useSelector } from "react-redux";
 import { getUserDetails } from "../Helper/SessionHelper";
@@ -14,12 +14,12 @@ import { setSelectUser, setSingleMessage } from "../Redux/State/ChatSlice";
 import { getOnline, getSender } from "../Helper/Logic";
 import io from "socket.io-client";
 import { setNotification, setOnlineUsers } from "../Redux/State/SettingSlice";
-import { myChatRequest } from "../APIrequests/ChatRequset";
+import { myChatRequest } from "../APIrequests/ChatRequest";
 
 import GroupIcon from "@mui/icons-material/Group";
 
 // const ENDPOINT = "https://chat-app-mern-qfhu.onrender.com/"
-const ENDPOINT = "http://localhost:4050/";
+const ENDPOINT = "http://localhost:4051/";
 export var socket, selectedChatCompare;
 
 const ChatBox = ({ dispatch }) => {
@@ -34,7 +34,7 @@ const ChatBox = ({ dispatch }) => {
   const allMessage = useSelector((state) => state.chat.allMessages);
   const notifications = useSelector((state) => state.setting.notifications);
   const onlineUsers = useSelector((state) => state.setting.onlineUsers);
-  const BG = require("../assets/images/bg-chat.png");
+  
 
   const onTyping = (e) => {
     setMessage(e.target.value);
@@ -128,7 +128,7 @@ const ChatBox = ({ dispatch }) => {
         <div
           className="flex flex-col bg-[#efeae2] overflow-hidden flex-grow h-[89.5vh]"
           style={{
-            backgroundImage: `url(${require("../assets/images/bg-chat.png")})`,
+            backgroundImage:BG,
           }}
         >
           <div className="flex justify-between bg-[#f0f2f5] px-2 lg:px-4 py-2 border-b-2">

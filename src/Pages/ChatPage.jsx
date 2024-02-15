@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useReducer } from 'react'
 import MyChat from '../Components/MyChat'
 import ChatBox  from '../Components/ChatBox'
 import Header from '../Components/Header'
-import { myChatRequest } from '../APIrequests/ChatRequset'
+import { myChatRequest } from '../APIrequests/ChatRequest'
 import { useSelector } from 'react-redux'
 import ChatUserSearch from '../Components/Drawer/ChatUserSearch'
 import GrpUserSearch from '../Components/Drawer/GrpUserSearch'
@@ -39,7 +39,8 @@ const ChatPage = () => {
   }, [newMsg, allMessages])
 
   return (
-    <Fragment className='relative h-screen'>
+    <div className='relative h-screen'>
+    <Fragment >
       <ChatUserSearch state={state} dispatch={dispatch} />
       <GrpUserSearch state={state} dispatch={dispatch} />
       <GroupInfo state={state} dispatch={dispatch} />
@@ -57,6 +58,7 @@ const ChatPage = () => {
         </div>
       </div>
     </Fragment>
+    </div>
   )
 }
 

@@ -53,7 +53,7 @@ const Login = () => {
               <div className="space-y-3 md:space-y-6">
                 <div>
                   <label
-                    for="email"
+                    htmlFor="email"
                     className="block mb-2 text-sm font-medium text-gray-900 "
                   >
                     Your email
@@ -70,7 +70,7 @@ const Login = () => {
                 </div>
                 <div>
                   <label
-                    for="password"
+                    htmlFor="password"
                     className="block mb-2 text-sm font-medium text-gray-900 "
                   >
                     Password
@@ -80,7 +80,7 @@ const Login = () => {
                       <label
                         onClick={() => setShow(!show)}
                         className="hover:bg-gray-200 rounded px-2 py-1 text-sm text-gray-600 font-mono cursor-pointer js-password-label"
-                        for="toggle"
+                        htmlFor="toggle"
                       >
                         {show ? (
                           <svg
@@ -134,7 +134,7 @@ const Login = () => {
                     </div>
                     <div className="ml-1 md:ml-3 text-sm">
                       <label
-                        for="remember"
+                        htmlFor="remember"
                         className="text-xs md:text-sm text-gray-500 "
                       >
                         Remember me

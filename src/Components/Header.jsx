@@ -6,9 +6,9 @@ import { ErrorToast, IsEmpty, IsPassword, getBase64 } from '../Helper/FormHelper
 import { useSelector } from 'react-redux'
 import NotificationBadge from 'react-notification-badge'
 import { Effect } from 'react-notification-badge';
-import { setSelectUser } from '../redux/state/chatSlice'
-import { emptyNotification, removeNotification } from '../redux/state/settingSlice'
-import store from '../redux/store/store'
+import { setSelectUser } from '../Redux/State/ChatSlice'
+import { emptyNotification, removeNotification } from '../Redux/State/SettingSlice'
+import store from '../Redux/Store/Store'
 
 const Header = () => {
     let fname, lname, image, imageView, oPassword, nPassword = useRef()
@@ -74,7 +74,7 @@ const Header = () => {
               style={{ width: "3.3rem", marginRight: "4px" }}
             />
             
-                    <span class="text-2xl font-bold text-white ">Chat2Swastic</span>
+                    <span className="text-2xl font-bold text-white ">Chat2Swastic</span>
                 </div>
                 <div className="flex items-center space-x-3 lg:space-x-8">
                     <div className="px-1 h-35">
@@ -85,7 +85,7 @@ const Header = () => {
                                 </path>
                             </svg>
                         </button>
-                        <div className={`absolute ${toggle ? 'block' : 'hidden'} right-6 md:right-24 z-10 mt-2 w-60 md:w-80 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`} role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                        <div className={`absolute ${toggle ? 'block' : 'hidden'} right-6 md:right-24 z-10 mt-2 w-60 md:w-80 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`} role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabIndex="-1">
                             {
                                 notifications?.length > 0 ? (
                                     <div onClick={() => setToggle(!toggle)} className="p-1">
@@ -139,7 +139,7 @@ const Header = () => {
                                 <div className="profile flex justify-center ">
                                     <img ref={(i) => imageView = i} src={ProfileData.photo} className="w-24 h-24 object-cover rounded-full" alt="Profile pic" />
                                     <div className="w-24 h-24 group hover:bg-gray-200 opacity-60 rounded-full absolute flex justify-center items-center cursor-pointer transition duration-500">
-                                        <img className="hidden absolute group-hover:block w-8" for="file-input" src="https://www.svgrepo.com/show/33565/upload.svg" alt="" />
+                                        <img className="hidden absolute group-hover:block w-8" htmlFor="file-input" src="https://www.svgrepo.com/show/33565/upload.svg" alt="" />
                                         <input
                                             onChange={previewImage} ref={(input) => image = input}
                                             type="file"
@@ -149,15 +149,15 @@ const Header = () => {
                                     </div>
                                 </div>
                                 <div>
-                                    <label for="fname" className="block mb-2 text-sm font-medium text-gray-900 ">Firstname</label>
-                                    <input ref={(i) => fname = i} defaultValue={ProfileData.firstname} type="text" name="fname" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-[#6c2fa8] dark:focus:border-[#6c2fa8]" placeholder="e.g. John" required="" />
+                                    <label htmlFor="fname" className="block mb-2 text-sm font-medium text-gray-900 ">Firstname</label>
+                                    <input ref={(i) => fname = i} defaultValue={ProfileData.firstname} type="text" name="fname" id="fname" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-[#6c2fa8] dark:focus:border-[#6c2fa8]" placeholder="e.g. John" required="" />
                                 </div>
                                 <div>
-                                    <label for="lname" className="block mb-2 text-sm font-medium text-gray-900 ">Lastname</label>
-                                    <input ref={(i) => lname = i} defaultValue={ProfileData.lastname} type="text" name="lname" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-[#6c2fa8] dark:focus:border-[#6c2fa8]" placeholder="e.g. Doe" required="" />
+                                    <label htmlFor="lname" className="block mb-2 text-sm font-medium text-gray-900 ">Lastname</label>
+                                    <input ref={(i) => lname = i} defaultValue={ProfileData.lastname} type="text" name="lname" id="lname" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-[#6c2fa8] dark:focus:border-[#6c2fa8]" placeholder="e.g. Doe" required="" />
                                 </div>
                                 <div>
-                                    <label for="email" className="block mb-2 text-sm font-medium text-gray-900 ">Email</label>
+                                    <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 ">Email</label>
                                     <input defaultValue={ProfileData.email} disabled type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-[#6c2fa8] dark:focus:border-[#6c2fa8]" placeholder="name@company.com" required="" />
                                 </div>
                                 <button onClick={onSave} type="submit" className="w-full text-white bg-[#6c2fa8] hover:bg-[#9333ea] focus:ring-4 focus:outline-none focus:ring-[#a855f7] font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-[#6c2fa8] dark:hover:bg-[#9333ea] dark:focus:ring-[#a855f7]">Save</button>
@@ -176,12 +176,12 @@ const Header = () => {
                         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                             <div className="space-y-4 md:space-y-6">
                                 <div>
-                                    <label for="fname" className="block mb-2 text-sm font-medium text-gray-900 ">Old Password</label>
-                                    <input ref={(i) => oPassword = i} type="password" name="fname" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-[#0e888f] dark:focus:border-[#1d898f]" placeholder="••••••••" required="" />
+                                    <label htmlFor="fname" className="block mb-2 text-sm font-medium text-gray-900 ">Old Password</label>
+                                    <input ref={(i) => oPassword = i} type="password" name="fname" id="fname" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-[#0e888f] dark:focus:border-[#1d898f]" placeholder="••••••••" required="" />
                                 </div>
                                 <div>
-                                    <label for="lname" className="block mb-2 text-sm font-medium text-gray-900 ">New Password</label>
-                                    <input ref={(i) => nPassword = i} type="password" name="lname" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-[#0e8d94] dark:focus:border-[#1b868b]" placeholder="••••••••" required="" />
+                                    <label htmlFor="lname" className="block mb-2 text-sm font-medium text-gray-900 ">New Password</label>
+                                    <input ref={(i) => nPassword = i} type="password" name="lname" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-[#0e8d94] dark:focus:border-[#1b868b]" placeholder="••••••••" required="" />
                                 </div>
                                 <button onClick={onSavePass} type="submit" className="w-full text-white bg-[#6c2fa8] hover:bg-[#9333ea] focus:ring-4 focus:outline-none focus:ring-[#a855f7] font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-[#6c2fa8] dark:hover:bg-[#9333ea] dark:focus:ring-[#a855f7]">Save</button>
                             </div>

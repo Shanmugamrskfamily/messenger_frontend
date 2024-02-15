@@ -5,7 +5,7 @@ import RegistrationPage from './Pages/RegistrationPage';
 import LoginPage from './Pages/LoginPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NotFoundPage from './Pages/NotFoundPage';
-import ForgetPasswordPage from './Pages/ForgetPasswordPage';
+import ForgetPasswordPage from './Pages/ForgotPasswordPage';
 import ResetPasswordPage from './Pages/ResetPasswordPage';
 import FullscreenLoader from './Components/MasterLayout/FullScreenLoader';
 import { Toaster } from 'react-hot-toast';
