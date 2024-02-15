@@ -1,0 +1,55 @@
+/* login-form */
+.login-form{
+    display: grid;
+    padding: 20px;
+    grid-template-columns: minmax(260px,400px);
+    gap: 14px;
+    margin-inline: auto;
+}
+
+.login-form  .other-links{    
+    display: flex;
+    justify-content: space-around;  
+}
+
+.login-form .form-title{
+    text-align: center;
+}
+
+/* signup form */
+
+.signup-form {
+    display: grid;
+    padding: 20px;
+    grid-template-columns: minmax(260px, 400px);
+    gap: 14px;
+    margin-inline: auto;
+}
+
+.signup-form .other-links {
+    display: flex;
+    justify-content: space-around;
+}
+
+.signup-form .form-title {
+    text-align: center;
+}
+
+/* forgot form */
+
+.forgot-form {
+    display: grid;
+    padding: 20px;
+    grid-template-columns: minmax(260px, 400px);
+    gap: 14px;
+    margin-inline: auto;
+}
+
+.forgot-form .other-links {
+    display: flex;
+    justify-content: space-around;
+}
+
+.forgot-form .form-title {
+    text-align: center;
+}

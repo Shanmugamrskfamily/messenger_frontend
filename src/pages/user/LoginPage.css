@@ -1,0 +1,30 @@
+.login-page img{
+    width: 100%;
+}
+
+.login-page .body-sections{
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 600px));
+justify-content: center;
+align-items: center;
+gap: min(100px,2vw);
+
+}
+
+.body-sections >*{
+    /* border: 2px solid red; */
+}
+
+.signup-page img {
+    width: 100%;
+}
+
+.signup-page .body-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 600px));
+    justify-content: center;
+    align-items: center;
+    gap: min(100px, 2vw);
+
+}
+
