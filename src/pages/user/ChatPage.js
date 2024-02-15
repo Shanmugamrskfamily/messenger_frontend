@@ -3,7 +3,7 @@ import { Header } from "../../components/Header";
 import { ConversationRoom } from "../../components/ConversationRoom";
 import { ChatRoomsList } from "../../components/ChatRoomsList";
 import { useNavigate } from "react-router-dom";
-import { appContext } from "../../App"; 
+import { appContext } from "../../App";
 
 function ChatPage() {
   const navigate = useNavigate();
@@ -23,26 +23,24 @@ function ChatPage() {
     });
 
     return () => {
-      
       socket.off("updated_users");
     };
   }, [socket, setUsers, currentUser]);
 
   return (
-    <>
-      <div className="page chat-page-container">
-        <div className="mobile-chat-page">
+    <div className="container bg-gray-100 min-h-screen">
           {selectedRoom ? (
+            <>
+            <Header/>
             <ConversationRoom />
+            </>
           ) : (
             <>
               <Header />
               <ChatRoomsList />
             </>
           )}
-        </div>
-      </div>
-    </>
+    </div>
   );
 }
 

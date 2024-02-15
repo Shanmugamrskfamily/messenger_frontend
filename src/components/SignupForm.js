@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import * as yup from "yup";
 import { Link } from "react-router-dom";
+
 function SignupForm() {
   const loginFormInitialValuesObj = {
     name: "",
@@ -38,9 +39,8 @@ function SignupForm() {
       (key) => formValues[key] === ""
     );
     if (isAnyEmptyFields) {
-      toast.warning("empty fileds");
+      toast.warning("Empty fields");
     } else {
-      // console.log("form values", formValues);
       const fetchResponse = await fetch(
         `${process.env.REACT_APP_SERVER_API}/user/signup`,
         {
@@ -58,11 +58,14 @@ function SignupForm() {
       }
     }
   };
+
   return (
     <>
       <form className="signup-form" onSubmit={handleSubmit}>
-        <h2 className="form-title">User Registration</h2>
+        <h2 className="text-center text-4xl mb-4">User Registration</h2>
+        <div className="mb-4">
         <TextField
+          fullWidth
           name="name"
           value={values.name}
           error={!!errors.name}
@@ -71,7 +74,10 @@ function SignupForm() {
           onChange={handleChange}
           onBlur={handleBlur}
         />
+        </div>
+        <div className="mb-4">
         <TextField
+          fullWidth
           name="mobile"
           value={values.mobile}
           error={!!errors.mobile}
@@ -80,7 +86,10 @@ function SignupForm() {
           onChange={handleChange}
           onBlur={handleBlur}
         />
+        </div>
+        <div className="mb-4">
         <TextField
+          fullWidth
           name="email"
           value={values.email}
           error={!!errors.email}
@@ -89,7 +98,10 @@ function SignupForm() {
           onChange={handleChange}
           onBlur={handleBlur}
         />
+        </div>
+        <div className="mb-4">
         <TextField
+          fullWidth
           name="password"
           value={values.password}
           error={touched.password ? !!errors.password : false}
@@ -98,7 +110,10 @@ function SignupForm() {
           onChange={handleChange}
           onBlur={handleBlur}
         />
+        </div>
+        <div className="mb-4">
         <TextField
+          fullWidth
           name="cpassword"
           value={values.cpassword}
           error={touched.cpassword ? !!errors.cpassword : false}
@@ -107,19 +122,17 @@ function SignupForm() {
           onChange={handleChange}
           onBlur={handleBlur}
         />
-        <Button type="submit" variant="contained">
+        </div>
+        <div className="mb-4">
+        <Button type="submit" variant="contained" className="w-full mb-4">
           Register
         </Button>
-        <div className="other-links">
-          <Link to="/forgot">Forgot?</Link>
-          <Link to="/">Have an Account? Login</Link>
+        </div>
+        <div className="mb-4 flex justify-between">
+          <Link className='text-blue-700 underline' to="/forgot">Forgot Password?</Link>
+          <Link className='text-blue-700 underline' to="/">Have an Account? Login</Link>
         </div>
       </form>
-      {/* <p>touched {JSON.stringify(touched)}</p>
-
-      <p>errors {JSON.stringify(errors)}</p>
-
-      <p>values {JSON.stringify(values)}</p> */}
     </>
   );
 }

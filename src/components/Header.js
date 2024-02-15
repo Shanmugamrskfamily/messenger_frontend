@@ -1,7 +1,5 @@
-import "../pages/user/chat.css";
-import SettingsPowerRoundedIcon from "@mui/icons-material/SettingsPowerRounded";
-import IconButton from "@mui/material/IconButton";
 import { useNavigate } from "react-router-dom";
+
 function Header() {
   const navigate = useNavigate();
 
@@ -10,16 +8,17 @@ function Header() {
     localStorage.removeItem("chatEmail");
     navigate("/");
   };
+
   return (
-    <div className="chat-header header">
+    <div className="bg-blue-500 text-white flex justify-between items-center px-4 py-2">
       <img
-        style={{ borderRadius: "50%" }}
         src="https://i.ibb.co/QDkbTJK/schat-app-logo-icon-vector.png"
         alt="chat-logo"
+        className="rounded-full h-12 w-12"
       />
-      <IconButton sx={{ color: "white" }} aria-label="log out" onClick={logout}>
-        <SettingsPowerRoundedIcon />
-      </IconButton>
+      <button className="ml-4" onClick={logout}>
+        Logout
+      </button>
     </div>
   );
 }

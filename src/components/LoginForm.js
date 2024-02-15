@@ -2,11 +2,11 @@ import { Button, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import * as yup from "yup";
-import "./Forms.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { appContext } from "../App";
-import { CustomLoadingButton } from "./customLoadingButton";
+import { CustomLoadingButton } from "../components/customLoadingButton.js";
+
 function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
   const { currentUser, setCurrentUser, socket } = useContext(appContext);
@@ -31,9 +31,8 @@ function LoginForm() {
       (key) => formValues[key] === ""
     );
     if (isAnyEmptyFields) {
-      toast.warning("empty fileds");
+      toast.warning("Empty fields");
     } else {
-      // console.log("form values", formValues);
       const fetchResponse = await fetch(
         `${process.env.REACT_APP_SERVER_API}/user/login`,
         {
@@ -42,7 +41,6 @@ function LoginForm() {
           headers: { "Content-Type": "application/json" },
         }
       );
-      // console.log("fetch Response login", fetchResponse);
       if (fetchResponse.status === 200) {
         setIsLoading(false);
         const data = await fetchResponse.json();
@@ -58,11 +56,13 @@ function LoginForm() {
       }
     }
   };
+
   return (
-    <>
-      <form className="login-form" onSubmit={handleSubmit}>
-        <h2 className="form-title">Login Form</h2>
+      <form className='login-form' onSubmit={handleSubmit}>
+      <h1 className="text-4xl text-center mb-4">Login</h1>
+      <div className="mb-5">
         <TextField
+          fullWidth
           name="email"
           value={values.email}
           error={!!errors.email}
@@ -70,8 +70,12 @@ function LoginForm() {
           helperText={errors.email}
           onChange={handleChange}
           onBlur={handleBlur}
+          
         />
+        </div>
+        <div className="mb-5">
         <TextField
+          fullWidth
           name="password"
           value={values.password}
           error={touched.password ? !!errors.password : false}
@@ -80,32 +84,37 @@ function LoginForm() {
           onChange={handleChange}
           onBlur={handleBlur}
         />
+        </div>
         <CustomLoadingButton
           isLoading={isLoading}
           setIsLoading={setIsLoading}
           buttonComponent={
-            <Button type="submit" variant="contained">
+            <Button type="submit" variant="contained" className="w-full">
               Login
             </Button>
           }
         />
-        <div className="other-links">
-          <Link to="/forgot">Forgot?</Link>
-          <Link to="/signup">New? Signup</Link>
+        <div className="mt-4 flex justify-between">
+          <Link className='text-blue-700 underline' to="/forgot">Forgot Password?</Link>
+          <Link className='text-blue-700 underline' to="/signup">New User? Signup</Link>
         </div>
-        <div className="other-links">
+        <div className="mt-4">
           <Button
             color="success"
             variant="contained"
+            className="w-full"
             onClick={() =>
               login({ email: "user1@gmail.com", password: "12345678" })
             }
           >
             Demo User1
           </Button>
+          </div>
+          <div className="mt-4">
           <Button
             variant="contained"
             color="secondary"
+            className="w-full mt-5"
             onClick={() =>
               login({ email: "user2@gmail.com", password: "87654321" })
             }
@@ -114,12 +123,6 @@ function LoginForm() {
           </Button>
         </div>
       </form>
-      {/* <p>touched {JSON.stringify(touched)}</p>
-
-      <p>errors {JSON.stringify(errors)}</p>
-
-      <p>values {JSON.stringify(values)}</p> */}
-    </>
   );
 }
 

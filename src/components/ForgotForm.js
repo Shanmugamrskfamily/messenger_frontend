@@ -2,11 +2,11 @@ import { Button, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import * as yup from "yup";
-import "./Forms.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+
 function ForgotForm() {
-  const [isVerfiedUser, setIsVerifiedUser] = useState(false);
+  const [isVerifiedUser, setIsVerifiedUser] = useState(false);
   const forgotFormInitialValuesObj = { email: "" };
 
   const forgotFormYupValidateObj = yup.object({
@@ -18,7 +18,7 @@ function ForgotForm() {
       initialValues: forgotFormInitialValuesObj,
       validationSchema: forgotFormYupValidateObj,
       onSubmit: (formValues) => {
-        isVerfiedUser ? sendLink(formValues) : verifyUserEmail(formValues);
+        isVerifiedUser ? sendLink(formValues) : verifyUserEmail(formValues);
       },
     });
 
@@ -27,7 +27,7 @@ function ForgotForm() {
       (key) => formValues[key] === ""
     );
     if (isAnyEmptyFields) {
-      toast.warning("empty fileds");
+      toast.warning("Empty fields");
     } else {
       const fetchResponse = await fetch(
         `${process.env.REACT_APP_SERVER_API}/user/reset`,
@@ -57,7 +57,7 @@ function ForgotForm() {
       (key) => formValues[key] === ""
     );
     if (isAnyEmptyFields) {
-      toast.warning("empty fileds 1");
+      toast.warning("Empty fields");
     } else {
       const fetchResponse = await fetch(
         `${process.env.REACT_APP_SERVER_API}/user/verifyEmail`,
@@ -79,11 +79,14 @@ function ForgotForm() {
       }
     }
   };
+
   return (
     <>
       <form className="forgot-form" onSubmit={handleSubmit}>
-        <h2 className="form-title">Forgot Form</h2>
+        <h2 className="form-title text-4xl text-center mb-4">Forgot Password</h2>
+        <div className='mb-4'>
         <TextField
+          fullWidth
           name="email"
           value={values.email}
           error={!!errors.email}
@@ -91,37 +94,37 @@ function ForgotForm() {
           helperText={errors.email}
           onChange={handleChange}
           onBlur={handleBlur}
-          disabled={isVerfiedUser}
+          disabled={isVerifiedUser}
         />
-
-        {isVerfiedUser ? (
+        </div>
+        {isVerifiedUser ? (
+          <div className='mb-4'>
           <Button
-            type={isVerfiedUser ? "submit" : "button"}
-            color="secondary"
+            type={isVerifiedUser ? "submit" : "button"}
             variant="contained"
+            color="secondary"
             onClick={sendLink}
           >
-            send Reset Link
+            Send Reset Link
           </Button>
+          </div>
         ) : (
+          <div className='mb-4'>
           <Button
-            type={!isVerfiedUser ? "submit" : "button"}
+            type={!isVerifiedUser ? "submit" : "button"}
             variant="contained"
+            className="w-full"
             onClick={verifyUserEmail}
           >
-            verify
+            Verify
           </Button>
+          </div>
         )}
-        <div className="other-links">
+        <div className="text-blue-700 underline flex justify-between">
           <Link to="/">Login?</Link>
           <Link to="/signup">New? Signup</Link>
         </div>
       </form>
-      {/* <p>touched {JSON.stringify(touched)}</p>
-
-      <p>errors {JSON.stringify(errors)}</p>
-
-      <p>values {JSON.stringify(values)}</p> */}
     </>
   );
 }
