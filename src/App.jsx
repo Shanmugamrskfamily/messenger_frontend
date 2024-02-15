@@ -1,35 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Fragment } from 'react';
+import './App.css';
+import ChatPage from './Pages/ChatPage';
+import RegistrationPage from './Pages/RegistrationPage';
+import LoginPage from './Pages/LoginPage';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import NotFoundPage from './Pages/NotFoundPage';
+import ForgetPasswordPage from './Pages/ForgetPasswordPage';
+import ResetPasswordPage from './Pages/ResetPasswordPage';
+import FullscreenLoader from './Components/MasterLayout/FullScreenLoader';
+import { Toaster } from 'react-hot-toast';
+import { getToken } from './Helper/SessionHelper';
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  if(getToken()){
+    return (
+      <Fragment>
+        <BrowserRouter>
+          <Routes>
+            <Route exact path='/chat' element={<ChatPage />}/>
+            <Route exact path='*' element={<NotFoundPage />}/>
+          </Routes>
+        </BrowserRouter>
+        <FullscreenLoader />
+        <Toaster position="top-right" reverseOrder={false}/>
+      </Fragment>
+    );
+  }else{
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Fragment>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path='/' element={<LoginPage />} />
+          <Route exact path='/register' element={<RegistrationPage />} />
+          <Route exact path='/forgetPassword' element={<ForgetPasswordPage />} />
+          <Route exact path='/resetPassword/:token' element={<ResetPasswordPage />} />
+          <Route exact path={'*'} element={<NotFoundPage />} />
+        </Routes>
+      </BrowserRouter>
+      <FullscreenLoader />
+      <Toaster position="top-right" reverseOrder={false} />
+    </Fragment>
+  );
+  }
 }
 
-export default App
+export default App;
