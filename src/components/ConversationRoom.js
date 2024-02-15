@@ -15,7 +15,7 @@ function ConversationRoom() {
     if(!token){
       navigate('/');
     }
-  },[])
+  },[navigate])
 
   const {
     currentUser,

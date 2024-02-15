@@ -23,7 +23,7 @@ function ChatRoomsList() {
     if(!token){
       navigate('/');
     }
-  },[])
+  },[navigate])
 
   useEffect(() => {
     setFilteredUsers(users);

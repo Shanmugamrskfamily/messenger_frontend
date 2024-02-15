@@ -6,7 +6,7 @@ import { SignupPage } from "./pages/user/SignupPage";
 import { ForgotPage } from "./pages/user/ForgotPage";
 import { LoginPage } from "./pages/user/LoginPage";
 import { ToastContainer } from "react-toastify";
-import { createContext, useEffect, useRef, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { ChatPage } from "./pages/user/ChatPage";
 import { io } from "socket.io-client";
 export const socket = io(process.env.REACT_APP_SERVER_API);
