@@ -12,6 +12,9 @@ function VerifyForgotPassword() {
     const verifyResetToken = async () => {
       try {
         const response = await fetch(`${process.env.REACT_APP_SERVER_API}/user/reset-password/${resetToken}`);
+        console.log('ReserToken:',resetToken);
+        console.log('Response',response);
+        debugger;
         if (response.ok) {
           const data = await response.json();
           toast.success(data.message);
