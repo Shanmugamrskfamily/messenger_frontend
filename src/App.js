@@ -38,7 +38,7 @@ function App() {
 
   return (
     <div className="App">
-      <ToastContainer theme="light" autoClose={3000} />
+      <ToastContainer theme="light" autoClose={2000} />
       <appContext.Provider value={appContextObj}>
         <Routes>
           <Route path="/" element={<LoginPage />} />
@@ -46,7 +46,7 @@ function App() {
           <Route path="/activate/:activationtoken" element={<VerifyToken />} />
           <Route path="/user" element={<ChatPage />} />
           <Route path="/forgot-password" element={<ForgotPage />} />
-          <Route path="/reset-password/:resetToken" element={<VerifyForgotPassword/>} />
+          <Route path="/reset-password/:resetToken" element={<VerifyForgotPassword/>}/>
           <Route path="/change-password/:resetToken" element={<ChangePassword/>} />
         </Routes>
       </appContext.Provider>

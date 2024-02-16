@@ -11,7 +11,7 @@ function VerifyForgotPassword() {
   useEffect(() => {
     const verifyResetToken = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_SERVER_API}/user/reset/${resetToken}`);
+        const response = await fetch(`${process.env.REACT_APP_SERVER_API}/user/reset-password/${resetToken}`);
         if (response.ok) {
           const data = await response.json();
           toast.success(data.message);
