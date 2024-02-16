@@ -27,7 +27,7 @@ function ChangePassword() {
       setIsLoading(true);
       try {
         const response = await fetch(`${process.env.REACT_APP_SERVER_API}/user/change-password/${resetToken}`, {
-          method: "POST",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
