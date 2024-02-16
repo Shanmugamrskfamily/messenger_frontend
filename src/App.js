@@ -10,7 +10,8 @@ import { createContext, useState } from "react";
 import { ChatPage } from "./pages/user/ChatPage";
 import { io } from "socket.io-client";
 import VerifyToken from "./pages/user/VerifyToken";
-import { Check } from "./pages/user/Check";
+import VerifyForgotPassword from "./components/VerifyForgotPassword";
+import ChangePassword from "./components/ChangePassword";
 export const socket = io(process.env.REACT_APP_SERVER_API);
 
 export const appContext = createContext();
@@ -42,9 +43,11 @@ function App() {
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
-          <Route path="/forgot" element={<ForgotPage />} />
-          <Route path="/user" element={<ChatPage />} />
           <Route path="/activate/:activationtoken" element={<VerifyToken />} />
+          <Route path="/user" element={<ChatPage />} />
+          <Route path="/forgot-password" element={<ForgotPage />} />
+          <Route path="/reset-password/:resetToken" element={<VerifyForgotPassword/>} />
+          <Route path="/change-password/:resetToken" element={<ChangePassword/>} />
         </Routes>
       </appContext.Provider>
     </div>

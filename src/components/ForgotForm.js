@@ -30,7 +30,7 @@ function ForgotForm() {
       toast.warning("Empty fields");
     } else {
       const fetchResponse = await fetch(
-        `${process.env.REACT_APP_SERVER_API}/user/reset`,
+        `${process.env.REACT_APP_SERVER_API}/user/forgot-password`,
         {
           method: "POST",
           headers: {
