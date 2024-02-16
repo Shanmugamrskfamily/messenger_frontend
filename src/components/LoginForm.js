@@ -95,7 +95,7 @@ function LoginForm() {
           }
         />
         <div className="mt-4 flex justify-between">
-          <Link className='text-blue-700 underline' to="/forgot">Forgot Password?</Link>
+          <Link className='text-blue-700 underline' to="/forgot-password">Forgot Password?</Link>
           <Link className='text-blue-700 underline' to="/signup">New User? Signup</Link>
         </div>
         <div className="mt-4">

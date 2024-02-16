@@ -129,7 +129,7 @@ function SignupForm() {
         </Button>
         </div>
         <div className="mb-4 flex justify-between">
-          <Link className='text-blue-700 underline' to="/forgot">Forgot Password?</Link>
+          <Link className='text-blue-700 underline' to="/forgot-password">Forgot Password?</Link>
           <Link className='text-blue-700 underline' to="/">Have an Account? Login</Link>
         </div>
       </form>
