@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 function ForgotPasswordForm() {
   const [email, setEmail] = useState("");
@@ -63,6 +64,10 @@ function ForgotPasswordForm() {
       >
         Reset Password
       </button>
+      <div className="text-blue-700 underline flex justify-between">
+          <Link to="/">Login?</Link>
+          <Link to="/signup">New? Signup</Link>
+        </div>
     </form>
   );
 }
