@@ -149,7 +149,7 @@ function Message({ message }) {
   return (
     <div
       className={`p-2 rounded-lg ${
-        currentUser.email === message.from ? "bg-blue-500 text-white" : "bg-gray-200"
+        currentUser.email === message.from ? "bg-blue-700 text-white" : "bg-gray-400 "
       }`}
     >
       <p className="font-semibold">{message.from}</p>
