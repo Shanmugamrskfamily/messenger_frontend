@@ -32,18 +32,30 @@ function ForgotPasswordForm() {
 
   return (
     <form onSubmit={handleSubmit} className="mt-4">
-      <div className="mb-4">
-        <label htmlFor="email" className="block text-gray-700 font-medium">
+      <div className="mb-2">
+        <label htmlFor="email" className="block text-black font-medium">
           Email
         </label>
         <input
+        type='email'
+          name="email"
+          className="w-full mt-2"
+          id="email"
+          value={email}
+          onChange={handleEmailChange}
+          placeholder="Enter Your Email"
+          required
+          
+        />
+
+        {/* <input
           id="email"
           type="email"
-          className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"
+          className="mt-1 block w-full  rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"
           value={email}
           onChange={handleEmailChange}
           required
-        />
+        /> */}
       </div>
       <button
         type="submit"

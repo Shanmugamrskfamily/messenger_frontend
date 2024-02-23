@@ -51,8 +51,8 @@ function ChangePassword() {
   });
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <form onSubmit={formik.handleSubmit} className="max-w-md w-full">
+    <div className="mt-3">
+      <form onSubmit={formik.handleSubmit} className="max-w-md  w-full">
         <div className="mb-4">
           <TextField
             fullWidth

@@ -19,7 +19,7 @@ function ChatRoomsList() {
 function Room({ user, setSelectedRoom }) {
   return (
     <div
-      className="flex bg-white p-4 cursor-pointer border rounded-lg hover:border-blue-500"
+      className="flex  p-4 cursor-pointer border rounded-lg hover:border-blue-500"
       onClick={() => setSelectedRoom(user.email)}
     >
       <div className="flex items-center space-x-4">

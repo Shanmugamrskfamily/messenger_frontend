@@ -3,15 +3,20 @@ import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import * as yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { appContext } from "../App";
 import { CustomLoadingButton } from "../components/customLoadingButton.js";
+
 
 function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
   const { currentUser, setCurrentUser, socket } = useContext(appContext);
   const navigate = useNavigate();
   const loginFormInitialValuesObj = { email: "", password: "" };
+
+  useEffect(()=>{
+    console.log('Process Demo:',process.env.DEMO_Email_1,process.env.DEMO_PASS_1,process.env.REACT_APP_SERVER_API );
+  })
 
   const loginFormYupValidateObj = yup.object({
     email: yup.string().email(),
@@ -104,7 +109,7 @@ function LoginForm() {
             variant="contained"
             className="w-full"
             onClick={() =>
-              login({ email: "user1@gmail.com", password: "12345678" })
+              login({ email: process.env.DEMO_Email_1, password: process.env.DEMO_PASS_1 })
             }
           >
             Demo User1
@@ -116,7 +121,7 @@ function LoginForm() {
             color="secondary"
             className="w-full mt-5"
             onClick={() =>
-              login({ email: "user2@gmail.com", password: "87654321" })
+              login({ email: process.env.DEMO_Email_2, password: process.env.DEMO_PASS_2 })
             }
           >
             Demo User2

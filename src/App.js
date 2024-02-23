@@ -12,6 +12,7 @@ import { io } from "socket.io-client";
 import VerifyToken from "./pages/user/VerifyToken";
 import VerifyForgotPassword from "./components/VerifyForgotPassword";
 import ChangePassword from "./components/ChangePassword";
+import { PasswordResetPage } from "./pages/user/PasswordResetPage";
 export const socket = io(process.env.REACT_APP_SERVER_API);
 
 export const appContext = createContext();
@@ -47,7 +48,7 @@ function App() {
           <Route path="/user" element={<ChatPage />} />
           <Route path="/forgot-password" element={<ForgotPage />} />
           <Route path="/reset-password/:resetToken" element={<VerifyForgotPassword/>}/>
-          <Route path="/change-password/:resetToken" element={<ChangePassword/>} />
+          <Route path="/change-password/:resetToken" element={<PasswordResetPage/>} />
         </Routes>
       </appContext.Provider>
     </div>

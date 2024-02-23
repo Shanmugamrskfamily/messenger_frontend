@@ -28,7 +28,7 @@ function ChatPage() {
   }, [socket, setUsers, currentUser]);
 
   return (
-    <div className="container bg-gray-100 min-h-screen">
+    <div className="container min-h-screen">
           {selectedRoom ? (
             <>
             <Header/>

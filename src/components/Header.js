@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 function Header() {
   const navigate = useNavigate();
@@ -10,15 +11,18 @@ function Header() {
   };
 
   return (
-    <div className="bg-blue-500 text-white flex justify-between items-center px-4 py-2">
+    <div className=" text-white flex justify-between items-center px-4 py-2">
       <img
-        src="https://i.ibb.co/QDkbTJK/schat-app-logo-icon-vector.png"
+        src='./images/logo.gif'
         alt="chat-logo"
         className="rounded-full h-12 w-12"
       />
-      <button className="ml-4" onClick={logout}>
-        Logout
+      <div className="">
+      <button className="ml-4 mr-2" onClick={logout}>
+        Logout <LogoutIcon/>
       </button>
+      
+      </div>
     </div>
   );
 }
