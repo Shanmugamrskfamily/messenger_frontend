@@ -83,9 +83,11 @@ function ChangePassword() {
             helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
           />
         </div>
+        <div className="text-center">
         <Button type="submit" variant="contained" disabled={isLoading}>
           {isLoading ? <CircularProgress size={24} /> : "Change Password"}
         </Button>
+        </div>
       </form>
     </div>
   );

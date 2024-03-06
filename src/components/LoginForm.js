@@ -1,4 +1,5 @@
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, IconButton, InputAdornment } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material"; // Import icons for password visibility toggle
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import * as yup from "yup";
@@ -9,6 +10,7 @@ import { CustomLoadingButton } from "../components/customLoadingButton.js";
 
 function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
   const { currentUser, setCurrentUser, socket } = useContext(appContext);
   const navigate = useNavigate();
   const loginFormInitialValuesObj = { email: "", password: "" };
@@ -81,8 +83,22 @@ function LoginForm() {
           error={touched.password ? !!errors.password : false}
           label="Password"
           helperText={errors.password}
+          type={showPassword ? "text" : "password"} // Set input type based on password visibility
           onChange={handleChange}
           onBlur={handleBlur}
+          InputProps={{ // Add InputProps to include eye icon for password visibility toggle
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={() => setShowPassword(!showPassword)}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
         </div>
         <CustomLoadingButton
@@ -104,7 +120,7 @@ function LoginForm() {
             variant="contained"
             className="w-full"
             onClick={() =>
-              login({ email: "user1@gmail.com", password: "12345678" })
+              login({ email: "demouser_1@demo.com", password: "Demo@1234" })
             }
           >
             Demo User1
@@ -116,9 +132,8 @@ function LoginForm() {
             color="secondary"
             className="w-full mt-5"
             onClick={() =>
-              login({ email: "user2@gmail.com", password: "87654321" })
-            }
-          >
+              login({ email: "demouser_2@demo.com", password: "Demo@1234" })
+            }>
             Demo User2
           </Button>
         </div>
