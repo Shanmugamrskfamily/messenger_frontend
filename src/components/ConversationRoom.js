@@ -51,10 +51,10 @@ function ConversationRoom() {
     if (messageRes.status === 200) {
       const data = await messageRes.json();
       setRoomMessages(data.payload.messages);
-      toast.success(data.message);
+      toast.success('Messages Loaded Successfully!');
     } else {
       const data = await messageRes.json();
-      toast.error(data.message);
+      toast.error('Error on Loading Messages!');
     }
   };
 
