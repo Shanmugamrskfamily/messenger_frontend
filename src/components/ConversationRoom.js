@@ -148,4 +148,20 @@ function ConversationRoom() {
   );
 }
 
+function Message({ message }) {
+  const { currentUser } = useContext(appContext);
+
+  return (
+    <div
+      className={`p-2 rounded-lg ${
+        currentUser.email === message.from ? "bg-blue-700 text-white" : "bg-gray-400 "
+      }`}
+    >
+      <p className="font-semibold">{message.from}</p>
+      <p>{message.content}</p>
+      <p className="text-xs">{moment(message.createAt).fromNow()}</p>
+    </div>
+  );
+}
+
 export { ConversationRoom };
