@@ -40,18 +40,17 @@ function ConversationRoom() {
     const messageRes = await fetch(
       `${process.env.REACT_APP_SERVER_API}/roomMessages`,
       {
-        headers: { selectedroom: selectedRoom },
+        method: "GET",
+        headers: {
+          selectedroom: selectedRoom,
+          // Include the current user's email address in the request headers
+          currentUserEmail: currentUser.email,
+        },
       }
     );
     if (messageRes.status === 200) {
       const data = await messageRes.json();
-      // Filter messages based on sender or recipient
-      const filteredMessages = data.payload.messages.filter(
-        (message) =>
-          message.from === currentUser.email ||
-          message.to === currentUser.email
-      );
-      setRoomMessages(filteredMessages);
+      setRoomMessages(data.payload.messages);
       toast.success(data.message);
     } else {
       const data = await messageRes.json();
@@ -78,13 +77,7 @@ function ConversationRoom() {
 
   useEffect(() => {
     socket.on("receive_room_messages", (rmMessages) => {
-      // Filter messages based on sender or recipient
-      const filteredMessages = rmMessages.filter(
-        (message) =>
-          message.from === currentUser.email ||
-          message.to === currentUser.email
-      );
-      setRoomMessages(filteredMessages);
+      setRoomMessages(rmMessages);
     });
   }, [socket]);
 
