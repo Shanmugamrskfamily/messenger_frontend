@@ -17,7 +17,6 @@ function ConversationRoom() {
   const [currentRoom, setCurrentRoom] = useState("");
   const [currentMessage, setCurrentMessage] = useState("");
   const messagesEndRef = useRef(null);
-  const chatEmail=localStorage.getItem('chatEmail');
 
   const sendMessage = () => {
     if (currentMessage) {
@@ -55,21 +54,20 @@ function ConversationRoom() {
   };
 
   useEffect(() => {
-    // const a = selectedRoom
-    //   .split(",")
-    //   .filter((email) => email !== currentUser.email);
-    // if (a.length === 0) {
-    //   setCurrentRoom(users.find((user) => user.email === currentUser.email));
-    // } else {
-    //   setCurrentRoom(users.find((user) => user.email === a[0]));
-    // }
-    setCurrentRoom(chatEmail);
+    const a = selectedRoom
+      .split(",")
+      .filter((email) => email !== currentUser.email);
+    if (a.length === 0) {
+      setCurrentRoom(users.find((user) => user.email === currentUser.email));
+    } else {
+      setCurrentRoom(users.find((user) => user.email === a[0]));
+    }
   }, [selectedRoom]);
 
   useEffect(() => {
     setRoomMessages(null);
     socket.emit("join_room", selectedRoom);
-    updateRoomMessages(chatEmail);
+    updateRoomMessages(selectedRoom);
   }, [selectedRoom]);
 
   useEffect(() => {
