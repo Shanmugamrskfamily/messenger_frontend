@@ -45,7 +45,13 @@ function ConversationRoom() {
     );
     if (messageRes.status === 200) {
       const data = await messageRes.json();
-      setRoomMessages(data.payload.messages);
+      // Filter messages based on sender or recipient
+      const filteredMessages = data.payload.messages.filter(
+        (message) =>
+          message.from === currentUser.email ||
+          message.to === currentUser.email
+      );
+      setRoomMessages(filteredMessages);
       toast.success(data.message);
     } else {
       const data = await messageRes.json();
@@ -72,7 +78,13 @@ function ConversationRoom() {
 
   useEffect(() => {
     socket.on("receive_room_messages", (rmMessages) => {
-      setRoomMessages(rmMessages);
+      // Filter messages based on sender or recipient
+      const filteredMessages = rmMessages.filter(
+        (message) =>
+          message.from === currentUser.email ||
+          message.to === currentUser.email
+      );
+      setRoomMessages(filteredMessages);
     });
   }, [socket]);
 
@@ -139,22 +151,6 @@ function ConversationRoom() {
           Send
         </button>
       </div>
-    </div>
-  );
-}
-
-function Message({ message }) {
-  const { currentUser } = useContext(appContext);
-
-  return (
-    <div
-      className={`p-2 rounded-lg ${
-        currentUser.email === message.from ? "bg-blue-700 text-white" : "bg-gray-400 "
-      }`}
-    >
-      <p className="font-semibold">{message.from}</p>
-      <p>{message.content}</p>
-      <p className="text-xs">{moment(message.createAt).fromNow()}</p>
     </div>
   );
 }
