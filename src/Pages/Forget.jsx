@@ -12,14 +12,9 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import '../Components/myStyles.css'
 import { useState } from 'react';
-import {  ForgetPasswordApi, LoginUser } from '../Services/apiServices';
-import { useDispatch, useSelector } from 'react-redux';
-import { setUserToken } from '../redux/chatSlice'
-import { useNavigate } from 'react-router-dom';
+import { ForgetPasswordApi } from '../Services/apiServices';
 import { toast } from 'react-toastify';
-// TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme({
   palette: {
@@ -30,29 +25,23 @@ const defaultTheme = createTheme({
 });
 
 export default function Forget() {
+  const [email, setEmail] = useState('');
 
-  const navigate=useNavigate();
- const dispatch=useDispatch();
-  const [emai,setEmail]=useState('');
-  const handleSubmit = async(event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      
-      const response = await ForgetPasswordApi({email:emai});
-      toast.success(`Reset Link Sent To Email..`);
-      console.log(response)  
-      
+      const response = await ForgetPasswordApi({ email });
+      toast.success(`Reset link sent to email.`);
+      console.log(response);
     } catch (error) {
-      toast.error(`Invalid Email or User!`);
+      toast.error(`Invalid email or user!`);
       console.log(error);
-      
     }
-   
   };
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs" fixed={true}  className='login'>
+      <Container component="main" maxWidth="xs" fixed={true} className="login">
         <CssBaseline />
         <Box
           sx={{
@@ -62,7 +51,6 @@ export default function Forget() {
             alignItems: 'center',
           }}
         >
-
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
@@ -79,23 +67,16 @@ export default function Forget() {
               name="email"
               autoComplete="email"
               autoFocus
-              onChange={(e)=>setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
-           
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
+            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
               Send Reset Mail
             </Button>
             <Grid container>
-             
               <Grid item>
                 <Link href="/register" variant="body2">
                   {"Don't have an account? Sign Up"}
