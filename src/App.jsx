@@ -15,6 +15,7 @@ import ResetPassword from './Pages/Reset';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import NotFound from './Components/NotFound';
+import AccountActivation from './Pages/AccountActivation';
 
 function App() {
  
@@ -36,6 +37,7 @@ const token=useSelector((state)=>state.chat.user.token);
        {/* <Route path='create-group' element={<CreateGroup/>}/> */}
 
       </Route>
+      <Route path='/activate/:token' element={<AccountActivation/>}/>
       <Route path='/register' element={<Register/>}/>
       <Route path='/forgot-password' element={<Forget/>}/>
       <Route path='/reset-password/:token' element={<ResetPassword/>} />
