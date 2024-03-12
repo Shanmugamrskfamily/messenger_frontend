@@ -20,12 +20,12 @@ export const LoginUser = async (payload) => {
 };
 
 export const ForgetPasswordApi = async (payload) => {
-    const response = await axios.post(`${BASE_URL}/user/forgot-password`, payload);
+    const response = await axios.post(`${BASE_URL}/api/forgot-password`, payload);
     return response;
 };
 
 export const ResetPasswordApi = async (payload,token) => {
-    const response = await axios.post(`${BASE_URL}/user/reset-password/${token}`, payload);
+    const response = await axios.post(`${BASE_URL}/api/reset-password/${token}`, payload);
     return response;
 };
 export const searchUserApi = async (payload,authToken) => {
