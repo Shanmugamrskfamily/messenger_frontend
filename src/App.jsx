@@ -14,6 +14,7 @@ import Forget from './Pages/Forget';
 import ResetPassword from './Pages/Reset';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import NotFound from './Components/NotFound';
 
 function App() {
  
@@ -27,10 +28,7 @@ const token=useSelector((state)=>state.chat.user.token);
   return (
     <>
     <div className='App' >
-  
-    
     <Routes>
-
       <Route exact path='/' element={<SignIn/>}/>
       <Route path='app' element={token?<MainContainer/>:<Navigate to='/' />}>
       <Route path='welcome' element={<Welcome/>}/>
@@ -41,13 +39,11 @@ const token=useSelector((state)=>state.chat.user.token);
       <Route path='/register' element={<Register/>}/>
       <Route path='/forgot-password' element={<Forget/>}/>
       <Route path='/reset-password/:token' element={<ResetPassword/>} />
+      <Route path="*" element={<NotFound />} />
       <Route/>
     </Routes>
     <ToastContainer />
     </div>
-  
-   
-
     </>
   )
 }
