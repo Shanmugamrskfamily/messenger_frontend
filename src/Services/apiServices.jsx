@@ -10,7 +10,7 @@ export const RegisterUser = async (payload) => {
 };
 
 export const ActivateAccount = async (token) => {
-    const response = await axios.post(`${BASE_URL}/api/activate/${token}`);
+    const response = await axios.get(`${BASE_URL}/api/activate/${token}`);
     return response;
 };
 
