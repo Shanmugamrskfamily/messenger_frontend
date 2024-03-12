@@ -33,15 +33,12 @@ export default function Forget() {
 
   const navigate=useNavigate();
  const dispatch=useDispatch();
-  const [user,setUser]=useState({
-    email:"",
-  
-  });
+  const [emai,setEmail]=useState('');
   const handleSubmit = async(event) => {
     event.preventDefault();
     try {
       
-      const response = await ForgetPasswordApi(user);
+      const response = await ForgetPasswordApi({email:emai});
       toast.success(`Reset Link Sent To Email..`);
       console.log(response)  
       
@@ -82,7 +79,7 @@ export default function Forget() {
               name="email"
               autoComplete="email"
               autoFocus
-              onChange={(e)=>setUser({...user,[e.target.name]:e.target.value})}
+              onChange={(e)=>setEmail(e.target.value)}
             />
            
             <FormControlLabel
