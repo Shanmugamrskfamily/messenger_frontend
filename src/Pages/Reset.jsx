@@ -31,17 +31,15 @@ const defaultTheme = createTheme({
 
 export default function ResetPassword() {
 
+  const { token } = useParams();
   const navigate=useNavigate();
- const dispatch=useDispatch();
-  const [user,setUser]=useState({
-    newPassword:"" 
-  
-  });
+  const dispatch=useDispatch();
+  const [newPassword,setNewPassword]=useState('');
   const handleSubmit = async(event) => {
     event.preventDefault();
     try {
-      const { token } = useParams();
-      const response = await ResetPasswordApi({ newPassword: user.newPassword }, token);
+      
+      const response = await ResetPasswordApi({newPassword: newPassword },token);
       console.log(response);
       toast.success('Password Changed Successfully!');
       navigate('/'); // Redirect to login page after successful password reset
@@ -77,12 +75,12 @@ export default function ResetPassword() {
               margin="normal"
               required
               fullWidth
-              name="newPassword"
-              label="newPassword"
+              name="Password"
+              label="Password"
               type="password"
-              id="newPassword"
+              id="Password"
               autoComplete="password"
-              onChange={(e)=>setUser({...user,[e.target.name]: e.target.value })}
+              onChange={(e)=>setNewPassword(e.target.value)}
             />
             {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
