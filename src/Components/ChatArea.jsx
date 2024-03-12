@@ -218,10 +218,10 @@ const handleSend=async()=>{
             <KeyboardBackspaceIcon/>
           </IconButton>}
           {/* <p className='con-icon'>{!selectedChat?.isGroupChat &&<img />}</p> */}
-        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+        <Avatar alt="Remy Sharp" src="./images/logo.gif" />
            
           <div className='header-text'>
-            <p className='con-title '>{selectedChat.chatName!=='sender'?
+            <p className=''>{selectedChat.chatName!=='sender'?
             (selectedChat?.chatName): 
              (selectedChat &&selectedChat.users?.length>0&&selectedChat?.users[1]?.name)}</p>
             <p className='con-timeStamp'>{isTyping?("typing"):(dummy.timeStamp)}</p>
@@ -234,6 +234,14 @@ const handleSend=async()=>{
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
           onClose={handleClose}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
         >
           <MenuItem onClick={handleAddUser}>Add a User</MenuItem>
           <MenuItem onClick={handleRemoveUser}>Remove User</MenuItem>

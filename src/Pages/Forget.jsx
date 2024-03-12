@@ -41,7 +41,13 @@ export default function Forget() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs" fixed={true} className="login">
+      <Container component="main" maxWidth="xs" fixed={true} sx={{
+            color:'white',
+            backdropFilter: 'blur(0px)', // Apply glass-like effect
+            backgroundColor: 'rgba(5, 9, 120, 0.893)', // Semi-transparent white background color
+            borderRadius: '20px', // Add border radius for rounded corners
+            padding: '20px', // Add padding for spacing
+          }} className="login">
         <CssBaseline />
         <Box
           sx={{
@@ -51,17 +57,20 @@ export default function Forget() {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Forget Password
+          </Avatar> */}
+          <img src="./images/logo.gif" alt="Logo" style={{height:'100px',width:'100px', margin:'10px'}} />
+          <Typography component="h1" variant="h4">
+            Forgot Password
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
               fullWidth
+              InputLabelProps={{ style: { color: 'white' } }} // Set label color
+              InputProps={{ style: { color: 'white' } }} // Set text color
               id="email"
               label="Email Address"
               name="email"
@@ -77,9 +86,9 @@ export default function Forget() {
               Send Reset Mail
             </Button>
             <Grid container>
-              <Grid item>
-                <Link href="/register" variant="body2">
-                  {"Don't have an account? Sign Up"}
+              <Grid item >
+                <Link href="/register" sx={{color:'yellow', textAlign:'center'}} variant="body1">
+                  Don't have an account? Sign Up
                 </Link>
               </Grid>
             </Grid>

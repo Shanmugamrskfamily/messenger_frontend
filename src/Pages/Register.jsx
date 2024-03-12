@@ -127,7 +127,13 @@ const formik = useFormik({
   return (
     <>
     <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs" fixed={true}  className='login'>
+      <Container component="main" maxWidth="xs" fixed={true} sx={{
+            color:'white',
+            backdropFilter: 'blur(0px)', // Apply glass-like effect
+            backgroundColor: 'rgba(5, 9, 120, 0.893)', // Semi-transparent white background color
+            borderRadius: '20px', // Add border radius for rounded corners
+            padding: '20px', // Add padding for spacing
+          }}  className='login'>
         <CssBaseline />
         <Box
           sx={{
@@ -138,17 +144,20 @@ const formik = useFormik({
           }}
         >
 
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Register
+          </Avatar> */}
+          <img src="./images/logo.gif" alt="Logo" style={{height:'100px',width:'100px', margin:'10px'}} />
+          <Typography component="h1" variant="h4">
+            Sign Up
           </Typography>
           <Box component="form" onSubmit={formik.handleSubmit} noValidate sx={{ mt: 1 }} >
           <TextField
               margin="normal"
               required
               fullWidth
+              InputLabelProps={{ style: { color: 'white' } }} // Set label color
+              InputProps={{ style: { color: 'white' } }} // Set text color
               id="name"
               label="Name"
               name="name"
@@ -164,6 +173,8 @@ const formik = useFormik({
               margin="normal"
               required
               fullWidth
+              InputLabelProps={{ style: { color: 'white' } }} // Set label color
+              InputProps={{ style: { color: 'white' } }} // Set text color
               id="email"
               label="Email Address"
               name="email"
@@ -179,6 +190,8 @@ const formik = useFormik({
               margin="normal"
               required
               fullWidth
+              InputLabelProps={{ style: { color: 'white' } }} // Set label color
+              InputProps={{ style: { color: 'white' } }} // Set text color
               name="password"
               label="Password"
               type="password"
@@ -204,13 +217,13 @@ const formik = useFormik({
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="/forget" variant="body2">
+                <Link href="/forget" sx={{color:'white'}} variant="body1">
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/" variant="body2">
-                  {"Already have an account? Sign in"}
+                <Link href="/" sx={{color:'yellow'}} variant="body1">
+                  Already have an account? Sign in
                 </Link>
               </Grid>
             </Grid>

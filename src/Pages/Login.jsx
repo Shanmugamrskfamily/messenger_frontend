@@ -150,7 +150,13 @@ export default function SignIn() {
   return (
     <>
     <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs" fixed={true}  className='login'>
+      <Container component="main" maxWidth="xs" fixed={true} sx={{
+            color:'white',
+            backdropFilter: 'blur(0px)', // Apply glass-like effect
+            backgroundColor: 'rgba(5, 9, 120, 0.893)', // Semi-transparent white background color
+            borderRadius: '20px', // Add border radius for rounded corners
+            padding: '20px', // Add padding for spacing
+          }}  className='login'>
         <CssBaseline />
         <Box
           sx={{
@@ -161,19 +167,22 @@ export default function SignIn() {
           }}
         >
 
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          {/* <Avatar sx={{ m: 1, bgcolor: 'blue' }}>
             <LockOutlinedIcon />
-          </Avatar>
+          </Avatar> */}
+          <img src="./images/logo.gif" alt="Logo" style={{height:'100px',width:'100px', margin:'10px'}} />
           <Typography component="h1" variant="h5">
-            Sign in
+            Login
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1, color:'white' }}>
             <TextField
               margin="normal"
               required
               fullWidth
               id="email"
               label="Email Address"
+              InputLabelProps={{ style: { color: 'white' } }} // Set label color
+              InputProps={{ style: { color: 'white' } }} // Set text color
               name="email"
               autoComplete="email"
               autoFocus
@@ -184,6 +193,8 @@ export default function SignIn() {
               margin="normal"
               required
               fullWidth
+              InputLabelProps={{ style: { color: 'white' } }} // Set label color
+              InputProps={{ style: { color: 'white' } }} // Set text color
               name="password"
               label="Password"
               type="password"
@@ -203,7 +214,7 @@ export default function SignIn() {
               sx={{ mt: 3, mb: 2 }}
               
             >
-              Sign In
+              Login
             </Button>
             <Button
               type="submit"
@@ -218,13 +229,13 @@ export default function SignIn() {
             
             <Grid container>
               <Grid item xs>
-                <Link href="/forgot-password" variant="body2">
+                <Link href="/forgot-password" sx={{color:'white'}} variant="body1">
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/register" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                <Link href="/register" sx={{color:'yellow'}} variant="body1">
+                  Don't have an account? Sign Up
                 </Link>
               </Grid>
             </Grid>

@@ -16,6 +16,7 @@ import {  useNavigate } from 'react-router-dom';
 import Pill from './Pill';
 import UserGroups from './UserGroups';
 import SearchUser from './SearchUser';
+import { ExitToApp } from '@mui/icons-material';
 
 
 
@@ -100,9 +101,10 @@ const logout=()=>{
     <div className='sidebar-container'>
    <div className='sb-header'>
    <div>
-   <IconButton onClick={handleOpenMenu}>
+   {/* <IconButton onClick={handleOpenMenu}>
    <AccountCircleIcon/>
-   </IconButton>
+   </IconButton> */}
+   <img src="/images/logo.gif" alt="Logo" style={{height:'50px',width:'50px', margin:'10px', borderRadius:'50%',cursor: 'pointer'}}/>
    <Menu
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
@@ -115,7 +117,6 @@ const logout=()=>{
    </div>
    <div>
    <IconButton onClick={()=>dispatch(toggelSearch())}>
-   Users
    <PersonAddAlt1Icon/>
    </IconButton>
    {/* <IconButton>
@@ -127,6 +128,9 @@ const logout=()=>{
    <IconButton onClick={()=>dispatch(toggleTheme())}>
    <NightlightIcon/>
    </IconButton>
+   <IconButton onClick={handleOpenMenu}>
+      <ExitToApp/>
+    </IconButton>
    </div>
    </div>
    <div className='sb-searchBar'>

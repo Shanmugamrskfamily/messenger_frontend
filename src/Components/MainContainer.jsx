@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setIsSmallScreen,setShowChatArea } from '../redux/chatSlice'
 import { io } from "socket.io-client";
 
-// export  const socket = io("https://chat-app-v1rl.onrender.com");
 
 
 function MainContainer() {
