@@ -103,12 +103,9 @@ export default function SignIn() {
 
     try {
 
-      const response = await LoginUser({email:"demouser@gmail.com",password:'1234567890'});
+      const response = await LoginUser({email:"demouser_2@demo.com",password:'Demo@1234'});
       if(response.status=200){
-
-
-
-        setLoading(false);
+      setLoading(false);
       const token=response.data.jwttoken
       const id=response.data.user
       // console.log(token)
